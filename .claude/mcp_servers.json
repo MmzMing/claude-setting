@@ -1,0 +1,11 @@
+{
+  "mcp_servers": {
+    "context7": {
+      "type": "builtin"
+    },
+    "bing-cn-mcp-server": {
+      "type": "streamable_http",
+      "url": "https://mcp.api-inference.modelscope.net/aee34599005a45/mcp"
+    }
+  }
+}
