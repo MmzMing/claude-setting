@@ -1,16 +1,9 @@
+---
+name: mysql-standards
+description: MySQL企业级开发规范 - 涵盖命名规范、建表规范、字段类型、索引规范、SQL编写、安全规范、事务规范等企业级MySQL开发标准。
+---
+
 # MySQL 企业级开发规范
-
-```markdown
-
----
-name: mysql-enterprise-rule
-version: 1.1.0
-description: 企业级 MySQL 开发规范规则集
----
-
-```
-
-# 📏 MySQL 企业级开发规则
 
 ## 一、命名规范规则
 
@@ -236,23 +229,23 @@ sql = f"SELECT * FROM users WHERE id = {user_id}"
 ```sql
 CREATE TABLE `table_name` (
   `id` BIGINT UNSIGNED NOT NULL COMMENT '主键 ID',
-  
+
   -- 业务字段
   `field_name` VARCHAR(100) NOT NULL DEFAULT '' COMMENT '字段说明',
   `status` TINYINT NOT NULL DEFAULT 1 COMMENT '状态 1:正常 0:禁用',
   `amount` DECIMAL(10,2) NOT NULL DEFAULT 0.00 COMMENT '金额',
-  
+
   -- 时间字段 (RULE-NAME-001)
   `created_time` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
   `updated_time` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '更新时间',
-  
+
   -- 审计字段
   `created_by` BIGINT NOT NULL DEFAULT 0 COMMENT '创建人 ID',
   `updated_by` BIGINT NOT NULL DEFAULT 0 COMMENT '更新人 ID',
-  
+
   -- 软删除 (RULE-TABLE-005)
   `is_deleted` TINYINT NOT NULL DEFAULT 0 COMMENT '软删除 0:正常 1:删除',
-  
+
   -- 索引
   PRIMARY KEY (`id`),
   UNIQUE KEY `uk_field_name` (`field_name`),
@@ -323,4 +316,3 @@ CREATE TABLE `table_name` (
 ⚠️ 用户要求: "这个字段可以为 NULL"
 ✅ AI 响应: "警告：违反 RULE-TABLE-004，建议 NOT NULL + DEFAULT，原因：..."
 ```
-

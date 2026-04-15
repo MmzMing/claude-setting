@@ -1,14 +1,9 @@
+---
+name: cicd-ops
+description: CI/CD流水线与运维部署规范 - 涵盖流水线规则、Docker容器化、Kubernetes部署、日志监控等企业级DevOps标准。
+---
+
 # CI/CD 与运维部署规范
-
-```markdown
----
-name: cicd-ops-rule
-version: 1.0.0
-description: 企业级 CI/CD 流水线与运维部署规范规则集
----
-```
-
-# 📏 CI/CD 与运维部署规则
 
 ## 一、CI/CD 流水线规则
 

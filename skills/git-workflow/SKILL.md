@@ -1,14 +1,9 @@
+---
+name: git-workflow
+description: Git企业级工作流与提交规范 - 涵盖分支管理、提交信息规范、PR流程、版本控制等企业级Git工作标准。
+---
+
 # Git 企业级开发规范
-
-```markdown
----
-name: git-enterprise-rule
-version: 1.1.0
-description: 企业级 Git 工作流与提交规范规则集
----
-```
-
-# 📏 Git 企业级开发规则
 
 ## 一、分支管理规则
 

@@ -1,14 +1,9 @@
+---
+name: security-audit
+description: 安全审计与合规性检查规范 - 涵盖代码安全审计(SAST)、运行时安全(DAST)、基础设施安全、安全检查清单等企业级安全标准。
+---
+
 # 安全审计与合规规范
-
-```markdown
----
-name: security-audit-rule
-version: 1.0.0
-description: 企业级安全审计与合规性检查规则集
----
-```
-
-# 🔒 安全审计与合规规则
 
 ## 一、代码安全审计 (SAST)
 
