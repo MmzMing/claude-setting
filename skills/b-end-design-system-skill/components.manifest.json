@@ -1,0 +1,100 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "name": "ludi-design-system-skill",
+  "version": "1.0.0",
+  "description": "B端设计系统、组件选型否定判据、页面模板与视觉门禁的机器可读契约",
+  "components": [
+    {
+      "name": "Button",
+      "category": "primitive",
+      "layoutRole": "action",
+      "variants": ["primary", "secondary", "outline", "ghost", "danger", "link"],
+      "useWhen": ["触发操作", "提交表单", "主次动作分流", "危险操作二次确认"],
+      "avoidWhen": ["纯页面跳转与外链（用 <a> 或 NavLink）", "纯状态展示（用 Badge）"],
+      "doNot": [
+        "一个操作区内严禁出现 2 个及以上 primary 按钮",
+        "审批通过与驳回等严肃责任决策区不设主操作，界面保持中立",
+        "危险操作必须使用 danger，严禁使用 primary 涂红替代"
+      ]
+    },
+    {
+      "name": "Badge",
+      "category": "primitive",
+      "layoutRole": "status-indicator",
+      "variants": ["success", "warning", "danger", "info", "processing", "secondary"],
+      "useWhen": ["客观表达系统生命周期与流转状态", "列表关键属性标记"],
+      "avoidWhen": ["主观分类或允许用户删除修改的标签（用 Tag）"],
+      "doNot": [
+        "不要在同一表格或卡片组中随机乱换颜色（非彩虹配色）",
+        "严禁纯深色刺眼底色，坚守 80% 浅底深字黄金法则",
+        "必须配有明确可读的业务文案，严禁只给颜色不给文字"
+      ]
+    },
+    {
+      "name": "ConfirmDialog",
+      "category": "feedback",
+      "layoutRole": "modal-confirmation",
+      "useWhen": ["涉及删除、清空、财产扣除、不可撤销操作的二次确认", "需要明确说明影响范围和损失的短确认"],
+      "avoidWhen": ["长表单录入或复杂编辑（用 Drawer 或 FormPage）", "查看详细数据（用 Drawer）"],
+      "doNot": [
+        "严禁允许点击背景遮罩层直接静默关闭（maskClosable=false）",
+        "标题必须中立交代对象，描述必须交代后果与不可逆性",
+        "主确认按钮严禁默认聚焦（防回车误触）"
+      ]
+    },
+    {
+      "name": "Drawer",
+      "category": "composite",
+      "layoutRole": "side-detail-and-edit",
+      "useWhen": ["列表上下文内查看实体详情或完成轻编辑", "需要保留背景页面上下文以供比对"],
+      "avoidWhen": ["危险操作确认（用 ConfirmDialog）", "超过 10 个字段的大型复杂表单（用独立表单页）"],
+      "doNot": [
+        "不要在抽屉内堆叠完整的多步骤支付或新建向导",
+        "详情需要生成独立 URL 分享协同给他人时，改用整页"
+      ]
+    },
+    {
+      "name": "DataGrid",
+      "category": "composite",
+      "layoutRole": "data-presentation",
+      "useWhen": ["大量结构化数据展示、分页、多维度排序与筛选", "支持行内操作与多选批量流转"],
+      "avoidWhen": ["仅有 2-3 条简单键值属性展示（用 DescriptionGrid）"],
+      "doNot": [
+        "数值与金额列严禁左对齐，必须严格右对齐以保证数位对齐",
+        "严禁使整个主视口产生横向滚动条，超宽表格必须在自身容器内滚动",
+        "固定列必须显式声明宽度，严禁遮挡相邻可见字段"
+      ]
+    },
+    {
+      "name": "FilterPanel",
+      "category": "composite",
+      "layoutRole": "query-toolbar",
+      "forms": ["inline-bar", "expandable-panel", "filter-drawer"],
+      "useWhen": ["为表格或卡片列表提供关键词模糊搜索与多条件过滤"],
+      "avoidWhen": ["固定只有 1-2 条记录无需过滤的静态列表"],
+      "doNot": [
+        "筛选项少于 3 项时不要做复杂的折叠面板",
+        "筛选结果为空时严禁只留一个死表头，必须展示清空筛选的出口"
+      ]
+    },
+    {
+      "name": "BulkActionBar",
+      "category": "composite",
+      "layoutRole": "floating-batch-bar",
+      "useWhen": ["表格勾选条数 >= 1 时滑出，承载批量导出、批量流转与批量删除"],
+      "avoidWhen": ["未勾选任何数据时常驻（必须完全隐藏）"],
+      "doNot": [
+        "不可缺少已选中数量的具体告知",
+        "批量危险操作必须联动 ConfirmDialog"
+      ]
+    }
+  ],
+  "pageArchetypes": [
+    "QueryTableListPage",
+    "SectionedFormPage",
+    "StandardDetailPage",
+    "MetricDashboardWorkbench",
+    "SystemSettingsPage",
+    "ExceptionResultPage"
+  ]
+}
